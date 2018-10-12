@@ -1,0 +1,7 @@
+.env
+virtual/
+.vscode
+award/__pycache__/
+awards/__pycache__/
+awards/migrations/
+
