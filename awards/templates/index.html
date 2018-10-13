@@ -1,2 +1,97 @@
 {% extends 'base.html'%}
-<h1>Welcome to Awards Website</h1>
+{% block content %}
+<body>
+{% for project in projects %}
+<div class="container-fluid" id="container">   
+              <div id="image" class="p-1">
+                <div id="front" class="zoom">
+                  <div class="overlay">
+    <div class="col-md-4 col-md-4 col-md-4">
+      <div class="well">
+      <img src="{{project.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{project.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+      <p>{{project.title}}</p>
+    <p>{{project.description}}</p>
+
+
+
+    <h5 class="display"><strong>Comments</strong>
+      <a class="view-more"></a>
+        {% for comment in comments %}
+        {% if comment.project_id == project.id %}
+          <li class="comments"> {{ comment.user.username }} 
+            <span class="comment">{{ comment.comment }}</span>
+              </li>
+              {% else %}
+              {% endif %}
+              {% endfor %}
+              <br>
+              <br>      
+          <div class="comment-input-wrapper">
+              <form action="{% url 'comment' project_id=project.id %}" method="post">
+                {% csrf_token %}
+                  <input class="add-comment" name="comment" id="comment{{image.id}}" type="text" placeholder="Add a comment....">
+                  </form>
+                  </div>
+                  <div class="hidden-data {{ image.pk }}" style="display: none;">
+                  <span class="image-pk">{{ image.pk }}</span>
+                  </div>
+ </h5>            
+
+    </div>
+    </div>
+</div>
+                </div>  
+              </div>        
+  {% endfor %}
+
+
+<!--  modal -->
+{% for project in projects %}
+<div class="modal fade"  id="exampleModal{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">{{project.name }}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+     </div>
+    <div class="modal-body">
+      <img src="{{project.dp.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
+      <p> {{project.description }}</p><label for="location"> Project BIo :{{project.bio }}</label>
+
+
+    </div>
+    <div class="modal-footer">
+      <input class="form-control" type="text" value="http://127.0.0.1:8000{{project.image.url}}" id="thislinkhere-{{project.id}}">
+      <a onclick="copyLink({{project.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
+          image Link</button></a>
+
+    </div>
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+  </div>
+</div>
+</div>
+</div>
+</body>
+<style>
+  .image{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100% !important;
+  }
+  .image:hover{
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    opacity: 0.7;
+    overflow: hidden;
+    transition: .5s ease;
+    transform: translateY(-7px);
+  }
+
+</style>
+
+{% endfor %}
+  {% endblock %}

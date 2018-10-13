@@ -80,3 +80,9 @@ class Project(models.Model):
     def display_projects(cls):
         projects=cls.objects.all()
         return projects
+
+    @classmethod
+    def search_profile(cls, query):
+       profile = cls.objects.filter(user__username__icontains=query)
+       return profile
+
