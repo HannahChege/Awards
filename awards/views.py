@@ -9,7 +9,7 @@
 # from rest_framework.response import Response
 # from rest_framework.views import APIView
 # from .models import  MoringaMerch
-# from .serializer import MerchSerializer
+from .serializer import MerchSerializer
 # # Create your views here.
 
 @login_required(login_url='/accounts/login/')
