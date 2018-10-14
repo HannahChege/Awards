@@ -12,8 +12,8 @@ class ProfileTestClass(TestCase):
         self.user = User.objects.create(id =1,username='hannah')
         self.profile = Profile(dp='hannah.jpg', bio='Life is too short', contact="0711139310",user=self.user)
 
-    # def test_instance(self):
-    #     self.assertTrue(isinstance(self.profile, Profile))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.profile, Profile))
 
     # def test_save_method(self):
     #     """
