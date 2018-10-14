@@ -1,7 +1,7 @@
-# from django.shortcuts import render, redirect
-# from django.http  import HttpResponse
-# import datetime as dt
-# from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+from django.http  import HttpResponse
+import datetime as dt
+from django.contrib.auth import login, authenticate
 from .forms import NewProjectForm,ProfileForm,CommentsForm
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
