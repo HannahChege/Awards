@@ -30,12 +30,12 @@ class ProfileTestClass(TestCase):
         self.profile.save_profile()
         
 
-    # def test_update_method(self):
-    #     """
-    #     Function to test that a profile's details can be updated
-    #     """
-    #     self.profile.save_profile()
-    #     new_profile = Profile.objects.filter(bio='LIfe is too short').update(bio='You only live once')
+    def test_update_method(self):
+        """
+        Function to test that a profile's details can be updated
+        """
+        self.profile.save_profile()
+        new_profile = Profile.objects.filter(bio='LIfe is too short').update(bio='You only live once')
 
     
     # def test_get_profile_by_id(self):
