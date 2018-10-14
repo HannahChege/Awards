@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,Project,Comments
+from .models import Profile,Project
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -23,10 +23,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model =Profile
         exclude=['user']
-class CommentsForm(forms.ModelForm):
-   class Meta:
-       model = Comments
-       fields = [ 'comment' ]    
+  
 
 # class UserRegisterForm(UserCreationForm):
 #     email = forms.EmailField()
