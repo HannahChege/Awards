@@ -23,11 +23,11 @@ class ProfileTestClass(TestCase):
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles) > 0)
 
-    # def test_delete_method(self):
-    #     """
-    #     Function to test that a profile can be deleted
-    #     """
-    #     self.profile.save_profile()
+    def test_delete_method(self):
+        """
+        Function to test that a profile can be deleted
+        """
+        self.profile.save_profile()
         
 
     # def test_update_method(self):
