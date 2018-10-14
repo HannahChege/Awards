@@ -77,7 +77,7 @@ class ProjectTestClass(TestCase):
         Function to test that a project can be deleted
         """
         self.project.save_project()
-        self.project.del_project()
+        self.project.delete_project()
 
 #     def test_update_method(self):
 #         """
