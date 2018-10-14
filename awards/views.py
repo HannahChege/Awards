@@ -2,8 +2,8 @@
 # from django.http  import HttpResponse
 # import datetime as dt
 # from django.contrib.auth import login, authenticate
-# from .forms import NewProjectForm,ProfileForm,CommentsForm
-# from django.contrib.auth.decorators import login_required
+from .forms import NewProjectForm,ProfileForm,CommentsForm
+from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
 from django.contrib.auth.models import User
 from rest_framework.response import Response
