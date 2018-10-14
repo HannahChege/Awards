@@ -49,17 +49,17 @@ class ProfileTestClass(TestCase):
 
 
 
-# class ProjectTestClass(TestCase):
-#     """
-#     Test project class and its functions
-#     """
-#     def setUp(self):
+class ProjectTestClass(TestCase):
+    """
+    Test project class and its functions
+    """
+    def setUp(self):
 
-#         self.user = User.objects.create(id =1,username='a')
-#         #creating an new profile
-#         self.profile = Profile(profile_pic='hii.jpg', bio='This is me', contact="1234567",user=self.user)
-#         self.profile.save_profile()
-#         self.project = Project(title='projects',landing_page='land.jpg', description='This projects', link='https://www.test.com', profile=self.profile, user=self.user)
+        self.user = User.objects.create(id =1,username='hannah')
+        #creating an new profile
+        self.profile = Profile(dp='pic.jpg', bio='LIfe is too short', contact="0711139310",user=self.user)
+        self.profile.save_profile()
+        self.project = Project(title='projects',image='pic.jpg', description='projects', url='https://www.test.com', profile=self.profile, user=self.user)
 
 #     def test_instance(self):
 #         self.assertTrue(isinstance(self.project, Project))
