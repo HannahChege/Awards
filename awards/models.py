@@ -54,6 +54,7 @@ class Project(models.Model):
     description = models.TextField()
     posted_time = models.DateTimeField(auto_now=True) 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    url = models.TextField()
     user=models.ForeignKey(User)
     
 
@@ -86,3 +87,34 @@ class Project(models.Model):
        profile = cls.objects.filter(user__username__icontains=query)
        return profile
 
+
+class Comments(models.Model):
+       """
+       Class that contains comments details
+       """
+       comment = HTMLField()
+       posted_date = models.DateTimeField(auto_now=True)
+       project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
+       user = models.ForeignKey(User, on_delete=models.CASCADE,null="True")
+
+       def __str__(self):
+               return self.comment
+
+       class Meta:
+               ordering = ['posted_date']
+
+       def save_comment(self):
+               self.save()
+
+       def del_comentm(self):
+               self.delete()
+
+       @classmethod
+       def get_comments_by_image_id(cls, image):
+               comments = Comments.objects.get(image_id=image)
+               return comments
+
+class MoringaMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)
