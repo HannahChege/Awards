@@ -18,10 +18,9 @@ def save_profile(sender, instance,**kwargs):
    instance.profile.save()
 # Create your models here.
 class Profile(models.Model):
-    username = models.CharField(max_length =30)
     bio = models.TextField()
     dp = models.ImageField( blank=True)
-    posted_time = models.DateTimeField(auto_now=True)
+    contact = models.CharField(max_length = 30, blank=True)
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE, primary_key=True)
    
     def __str__(self):

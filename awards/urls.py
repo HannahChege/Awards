@@ -10,7 +10,6 @@ urlpatterns=[
     # url(r'^project/(\d+)',views.project,name ='project'),
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^comment/(?P<project_id>\d+)', views.add_comment, name='comment'), 
     url(r'^api/merch/$', views.MerchList.as_view())
 ]
 if settings.DEBUG:
