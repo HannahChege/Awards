@@ -39,18 +39,18 @@
 
 
 
-# def search_results(request):
+def search_results(request):
 
-#    if 'username' in request.GET and request.GET["projects"]:
-#        category = request.GET.get("projects")
-#        searched_categories = Projects.search_image(category)
-#        message = f"{category}"
+   if 'username' in request.GET and request.GET["projects"]:
+       category = request.GET.get("projects")
+       searched_categories = Projects.search_image(category)
+       message = f"{category}"
 
-#        return render(request, 'all-task/search.html',{"message":message,"projects": searched_categories})
+       return render(request, 'all-task/search.html',{"message":message,"projects": searched_categories})
 
-#    else:
-#        message = " Found 0 images for the search term"
-#        return render(request, 'search.html',{"message":message})
+   else:
+       message = " Found 0 images for the search term"
+       return render(request, 'search.html',{"message":message})
 
 
 @login_required(login_url='/accounts/login/')
