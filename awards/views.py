@@ -5,7 +5,7 @@
 # from .forms import NewProjectForm,ProfileForm,CommentsForm
 # from django.contrib.auth.decorators import login_required
 # from .models import Project,Profile
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import  MoringaMerch
