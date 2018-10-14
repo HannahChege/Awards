@@ -79,11 +79,11 @@ class ProjectTestClass(TestCase):
         self.project.save_project()
         self.project.delete_project()
 
-#     def test_update_method(self):
-#         """
-#         Function to test that a project's details can be updated
-#         """
-#         self.project.save_pro()
-#         new_project = Project.objects.filter(title='projects').update(title='New one')
-#         projects = Project.objects.get(title='New one')
-#         self.assertTrue(projects.title, 'New one')
+    def test_update_method(self):
+        """
+        Function to test that a project's details can be updated
+        """
+        self.project.save_project()
+        new_project = Project.objects.filter(title='projects').update(title='project')
+        projects = Project.objects.get(title='project')
+        self.assertTrue(projects.title, 'project')
