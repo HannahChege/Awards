@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 import datetime as dt
 from django.contrib.auth import login, authenticate
-from .forms import NewProjectForm,ProfileForm
+from .forms import NewProjectForm,ProfileForm,VotesForm
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
 from django.contrib.auth.models import User
@@ -81,16 +81,24 @@ def new_profile(request):
     return render(request, "edit_profile.html", {"form":form,"image":image}) 
  
 
-def add_comment(request, project_id):
-   images = get_object_or_404(Image, pk=project_id)
-   if request.method == 'POST':
-       form = CommentsForm(request.POST)
-       if form.is_valid():
-           comment = form.save(commit=False)
-           comment.user = request.user
-           comment.image = images
-           comment.save()
-   return redirect('awards')
+def get_project_by_id(request,id):
+        project = Projects.objects.get(id=id)
+        vote = Votes()
+        if request.method == 'POST':
+
+                vote_form = Votes(request.POST)
+                if vote_form.is_valid():
+
+                        design = vote_form.cleaned_data['design']
+                        usability = vote_form.cleaned_data['usability']
+                        content = vote_form.cleaned_data['content']
+                        creativity = vote_form.cleaned_data['creativity']
+                        rating = Likes(design=design,usability=usability,
+                                        content=content,creativity=creativity,
+                                        user=request.user,project=project)
+                        rating.save()
+                        return redirect('/')
+        return render(request,'index.html',{"project":project,"vote":vote})
 
 
 class MerchList(APIView):

@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from django.core.validators import MinValueValidator,MaxValueValidator
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 from django.dispatch import receiver
@@ -86,7 +87,16 @@ class Project(models.Model):
        profile = cls.objects.filter(user__username__icontains=query)
        return profile
 
- 
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Posts,on_delete=models.CASCADE,related_name='reviews')
+    design = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    usability = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    creativity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    content = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+
 class MoringaMerch(models.Model):
     name = models.CharField(max_length=40)
     description = models.TextField()
