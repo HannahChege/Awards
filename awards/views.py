@@ -65,20 +65,20 @@
 #     user = User.objects.get(id=user_id)
 #     return render(request, 'profile.html',{'title':title, "projects":projects,"profiles":profiles})
 
-# @login_required(login_url='/accounts/login/')
-# def new_profile(request):
-#     current_user = request.user
-#     profile=Profile.objects.get(user=request.user)
-#     image= Profile.objects.get(user=request.user)
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('/')
+@login_required(login_url='/accounts/login/')
+def new_profile(request):
+    current_user = request.user
+    profile=Profile.objects.get(user=request.user)
+    image= Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES,instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
 
-#     else:
-#         form = ProfileForm()
-#     return render(request, "edit_profile.html", {"form":form,"image":image}) 
+    else:
+        form = ProfileForm()
+    return render(request, "edit_profile.html", {"form":form,"image":image}) 
  
 
 def add_comment(request, project_id):
