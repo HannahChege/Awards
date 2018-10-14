@@ -64,13 +64,13 @@ class ProjectTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.project, Project))
 
-#     def test_save_method(self):
-#         """
-#         Function to test that project is being saved
-#         """
-#         self.project.save_pro()
-#         projects = Project.objects.all()
-#         self.assertTrue(len(projects) > 0)
+    def test_save_method(self):
+        """
+        Function to test that project is being saved
+        """
+        self.project.save_pro()
+        projects = Project.objects.all()
+        self.assertTrue(len(projects) > 0)
 
 #     def test_delete_method(self):
 #         """
