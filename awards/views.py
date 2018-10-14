@@ -21,21 +21,21 @@
 #     return render(request,'index.html',{"projects":projects, "profiles":profiles })
 
 # @login_required(login_url='/accounts/login/')
-# def new_project(request):
-#     current_user = request.user
-#     if request.method == 'POST':
-#         form = NewProjectForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             image = form.save(commit=False)
-#             image.profile = current_user.profile
-#             image.user = current_user
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.profile = current_user.profile
+            image.user = current_user
 
-#             image.save()
-#         return redirect('award')
+            image.save()
+        return redirect('award')
 
-#     else:
-#         form = NewProjectForm()
-#     return render(request, 'new_project.html', {"form": form})
+    else:
+        form = NewProjectForm()
+    return render(request, 'new_project.html', {"form": form})
 
 
 
