@@ -68,7 +68,7 @@ class ProjectTestClass(TestCase):
         """
         Function to test that project is being saved
         """
-        self.project.save_pro()
+        self.project.save_project()
         projects = Project.objects.all()
         self.assertTrue(len(projects) > 0)
 
