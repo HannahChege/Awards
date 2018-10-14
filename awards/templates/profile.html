@@ -41,24 +41,7 @@
          </li>
 </ul>
 <hr>
-{% if images %}
-{% for image in images %}
-<div class="col-md-4">
-<br>
-<br>
-<img src="{{image.image.url}}" class="img-responsive">
-<br>
 
-<div class="well">
-               <a class="view-more"></a>
-                         {% for comment in comments %}
-                          {% if comment.image_id == image.id %}
-                           <li class="comments"> {{ comment.user.username }} said:
-                             <span class="comment">{{ comment.comment }}</span>
-                           </li>
-{% endif %}
-{% endfor%}
-</div>
 
 </div>
 {% endfor%}

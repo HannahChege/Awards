@@ -36,7 +36,7 @@ rating_choices = [
     (9, '9'), 
     (10, '10'),
 ]  
-class Votes(forms.Form):
+class VotesForm(forms.Form):
     design = forms.CharField(label='Design level', widget=forms.RadioSelect(choices=rating_choices))
 
     usability = forms.CharField(label='Usability level', widget=forms.RadioSelect(choices=rating_choices))

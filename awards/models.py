@@ -89,9 +89,9 @@ class Project(models.Model):
 
 
 
-class Review(models.Model):
+class Votes(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    post =  models.ForeignKey(Posts,on_delete=models.CASCADE,related_name='reviews')
+    project =  models.ForeignKey(Project,on_delete=models.CASCADE,related_name='reviews')
     design = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
     usability = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
     creativity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
