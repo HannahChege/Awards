@@ -12,15 +12,15 @@
 # from .serializer import MerchSerializer
 # # Create your views here.
 
-# @login_required(login_url='/accounts/login/')
-# def award(request):
-#     projects = Project.objects.all()
-#     for x in projects:
-#         print(x.image.url)
-#     profiles = Profile.objects.all()
-#     return render(request,'index.html',{"projects":projects, "profiles":profiles })
+@login_required(login_url='/accounts/login/')
+def award(request):
+    projects = Project.objects.all()
+    for x in projects:
+        print(x.image.url)
+    profiles = Profile.objects.all()
+    return render(request,'index.html',{"projects":projects, "profiles":profiles })
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
