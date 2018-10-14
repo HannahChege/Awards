@@ -61,8 +61,8 @@ class ProjectTestClass(TestCase):
         self.profile.save_profile()
         self.project = Project(title='projects',image='pic.jpg', description='projects', url='https://www.test.com', profile=self.profile, user=self.user)
 
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.project, Project))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.project, Project))
 
 #     def test_save_method(self):
 #         """
