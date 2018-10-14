@@ -53,17 +53,17 @@
 #        return render(request, 'search.html',{"message":message})
 
 
-# @login_required(login_url='/accounts/login/')
-# def profile(request, user_id):
-#     """
-#     Function that enables one to see their profile
-#     """
-#     title = "Profile"
+@login_required(login_url='/accounts/login/')
+def profile(request, user_id):
+    """
+    Function that enables one to see their profile
+    """
+    title = "Profile"
 
-#     projects = Project.get_project_by_id(id= user_id).order_by('-posted_time')
-#     profiles = User.objects.get(id=user_id)
-#     user = User.objects.get(id=user_id)
-#     return render(request, 'profile.html',{'title':title, "projects":projects,"profiles":profiles})
+    projects = Project.get_project_by_id(id= user_id).order_by('-posted_time')
+    profiles = User.objects.get(id=user_id)
+    user = User.objects.get(id=user_id)
+    return render(request, 'profile.html',{'title':title, "projects":projects,"profiles":profiles})
 
 @login_required(login_url='/accounts/login/')
 def new_profile(request):
