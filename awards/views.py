@@ -81,16 +81,16 @@
 #     return render(request, "edit_profile.html", {"form":form,"image":image}) 
  
 
-# def add_comment(request, project_id):
-#    images = get_object_or_404(Image, pk=project_id)
-#    if request.method == 'POST':
-#        form = CommentsForm(request.POST)
-#        if form.is_valid():
-#            comment = form.save(commit=False)
-#            comment.user = request.user
-#            comment.image = images
-#            comment.save()
-#    return redirect('awards')
+def add_comment(request, project_id):
+   images = get_object_or_404(Image, pk=project_id)
+   if request.method == 'POST':
+       form = CommentsForm(request.POST)
+       if form.is_valid():
+           comment = form.save(commit=False)
+           comment.user = request.user
+           comment.image = images
+           comment.save()
+   return redirect('awards')
 
 
 class MerchList(APIView):
