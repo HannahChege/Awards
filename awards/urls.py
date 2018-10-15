@@ -14,6 +14,10 @@ urlpatterns=[
     url(r'^api/profile/$', views.ProfileList.as_view()),
     url(r'api/project/project-id/(?P<pk>[0-9]+)/$',views.ProjectDescription.as_view()),
     url(r'api/profile/profile-id/(?P<pk>[0-9]+)/$',views.ProfileDescription.as_view()),
-]
+    url(r'^post/(?P<project_id>[0-9]+)/review_design/$', views.add_design, name='add_design'),
+    url(r'^post/(?P<project_id>[0-9]+)/review_usability/$', views.add_usability, name='review_usability'),
+    url(r'^post/(?P<project_id>[0-9]+)/review_content/$', views.add_content, name='review_content'),
+
+]   
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
