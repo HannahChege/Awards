@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 import datetime as dt
 from django.contrib.auth import login, authenticate
-from .forms import NewProjectForm,ProfileForm,VotesForm
+from .forms import NewProjectForm,ProfileForm,ContentForm,UsabilityForm,DesignForm
 from django.contrib.auth.decorators import login_required
 from .models import Project,Profile
 from django.contrib.auth.models import User
@@ -200,7 +200,7 @@ def add_usability(request, project_id):
         return redirect('award')
 
     return render(request, 'index.html')
-    
+
 @login_required(login_url='/login')
 def add_design(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
