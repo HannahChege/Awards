@@ -177,8 +177,61 @@ class ProfileDescription(APIView):
             return Response(serializers.data)
         else:
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)  
-            
+
     def delete(self, request, pk, format=None):
         merch = self.get_merch(pk)
         merch.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)        
+
+
+
+@login_required(login_url='/login')
+def add_usability(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = UsabilityForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.project = project
+            rate.user_name = request.user
+            rate.profile = request.user.profile
+
+            rate.save()
+        return redirect('award')
+
+    return render(request, 'index.html')
+    
+@login_required(login_url='/login')
+def add_design(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = DesignForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.project = project
+            rate.user_name = request.user
+            rate.profile = request.user.profile
+
+            rate.save()
+        return redirect('award')
+    else:
+        form = DesignForm()
+
+    return render(request, 'index.html',{'form': form})
+
+
+@login_required(login_url='/login')
+def add_content(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = ContentForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.project = project
+            rate.user_name = request.user
+            rate.profile = request.user.profile
+
+            rate.save()
+        return redirect('award')
+
+    return render(request, 'index.html')
