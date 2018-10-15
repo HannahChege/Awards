@@ -8,8 +8,7 @@ from .models import Project,Profile
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import  MoringaMerch
-from .serializer import MerchSerializer
+from .serializer import ProjectSerializer,ProfileSerializer
 # # Create your views here.
 
 @login_required(login_url='/accounts/login/')
@@ -101,8 +100,15 @@ def get_project_by_id(request,id):
         return render(request,'index.html',{"project":project,"vote":vote})
 
 
-class MerchList(APIView):
+class ProjectList(APIView):
     def get(self, request, format=None):
-        all_merch = MoringaMerch.objects.all()
+        all_merch = Project.objects.all()
         serializers = MerchSerializer(all_merch, many=True)
         return Response(serializers.data)   
+
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_merch = Profile.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)          
