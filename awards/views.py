@@ -8,7 +8,9 @@ from .models import Project,Profile
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import ProjectSerializer,ProfileSerializer
+from .serializer import ProfileSerializer,ProjectSerializer
+from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 # # Create your views here.
 
 @login_required(login_url='/accounts/login/')
@@ -103,12 +105,26 @@ def get_project_by_id(request,id):
 class ProjectList(APIView):
     def get(self, request, format=None):
         all_merch = Project.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
+        serializers = ProjectSerializer(all_merch, many=True)
         return Response(serializers.data)   
-
+    def post(self, request, format=None):
+        serializers = ProjectSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProfileList(APIView):
     def get(self, request, format=None):
         all_merch = Profile.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
-        return Response(serializers.data)          
+        serializers = ProfileSerializer(all_merch, many=True)
+        return Response(serializers.data)
+        permission_classes = (IsAdminOrReadOnly,)
+
+    def post(self, request, format=None):
+        serializers = ProfileSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        permission_classes = (IsAdminOrReadOnly,)
