@@ -56,6 +56,7 @@ class Project(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     url = models.TextField()
     user=models.ForeignKey(User)
+    rating = models.TextField()
     
 
     def save_project(self):
@@ -86,7 +87,31 @@ class Project(models.Model):
     def search_profile(cls, query):
        profile = cls.objects.filter(user__username__icontains=query)
        return profile
+    
 
+    @classmethod
+    def all_projects(cls):
+        projects = cls.objects.all()
+        return projects
+
+    @classmethod
+    def get_single_project(cls, project_id):
+        return cls.objects.get(pk=project_id)
+
+    def average_design(self):
+        all_ratings = list(map(lambda x: x.rating, self.designrating_set.all()))
+        return np.mean(all_ratings)
+
+    def average_usability(self):
+        all_ratings = list(map(lambda x: x.rating, self.usabilityrating_set.all()))
+        return np.mean(all_ratings)
+
+    def average_content(self):
+        all_ratings = list(map(lambda x: x.rating, self.contentrating_set.all()))
+        return np.mean(all_ratings)
+
+    def __str__(self):
+        return self.title
 
 class DesignRating(models.Model):
     RATING_CHOICES = (
