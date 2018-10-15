@@ -24,47 +24,20 @@ class ProfileForm(forms.ModelForm):
         model =Profile
         exclude=['user']
 
-rating_choices = [ 
-    (1, '1'), 
-    (2, '2'), 
-    (3, '3'), 
-    (4, '4'), 
-    (5, '5'), 
-    (6, '6'), 
-    (7, '7'), 
-    (8, '8'),
-    (9, '9'), 
-    (10, '10'),
-]  
-class VotesForm(forms.Form):
-    design = forms.CharField(label='Design level', widget=forms.RadioSelect(choices=rating_choices))
-
-    usability = forms.CharField(label='Usability level', widget=forms.RadioSelect(choices=rating_choices))
-
-    creativity  = forms.CharField(label='Creativity level', widget=forms.RadioSelect(choices=rating_choices))
-
-    content = forms.CharField(label='Content level', widget=forms.RadioSelect(choices=rating_choices))
+ 
+class ContentForm(forms.ModelForm):
+    class Meta:
+        model = ContentRating
+        fields = ['rating', 'comment']
 
 
+class UsabilityForm(forms.ModelForm):
+    class Meta:
+        model = UsabilityRating
+        fields = ['rating', 'comment']
 
 
-# class UserRegisterForm(UserCreationForm):
-#     email = forms.EmailField()
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password1', 'password2']
-
-
-# class UserUpdateForm(forms.ModelForm):
-#     email = forms.EmailField()
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email']
-
-
-# class ProfileUpdateForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ['username']
+class DesignForm(forms.ModelForm):
+    class Meta:
+        model = DesignRating
+        fields = ['rating', 'comment']
