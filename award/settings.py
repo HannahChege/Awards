@@ -160,5 +160,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
-CRISPY_TEMPLATE_PACK='bootstrap3'
 django_heroku.settings(locals())
