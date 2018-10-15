@@ -19,7 +19,8 @@ def award(request):
     for x in projects:
         print(x.image.url)
     profiles = Profile.objects.all()
-    return render(request,'index.html',{"projects":projects, "profiles":profiles })
+    form=ContentForm()
+    return render(request,'index.html',locals())
 
 @login_required(login_url='/accounts/login/')
 def new_project(request):
@@ -198,8 +199,9 @@ def add_usability(request, project_id):
 
             rate.save()
         return redirect('award')
-
-    return render(request, 'index.html')
+    else:
+        form = UsabilityForm()
+    return render(request, 'index.html',locals())
 
 @login_required(login_url='/login')
 def add_design(request, project_id):
