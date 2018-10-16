@@ -4,3 +4,9 @@ h1{
 body{
     background-color: black;
   }
+.panel-body{
+
+    border-radius: 20px;
+    border-color: black;
+    margin-top: 50px;
+  }
