@@ -4,6 +4,10 @@ AWARD
  HANNNAH NJERI
 # DESCRIPTION
 This is application  allows a user to post a project he/she has created and get it reviewed by his/her peers..
+In this project you as a user you will be able to post a project where your peers are going to review.When you post a project you will be able to rate the project into three parts
+`Usability
+`Design
+`Content
 The application is build with Django Framework in Pthyon.
 
 # USER STORIES
@@ -16,7 +20,41 @@ As a user of the application you should be able to:
 `View projects overall score
 `View my profile page.
 
- 
+ # INSTALATION REQUIREMENTS
+installations required
+python version should be 3.6 -Django version 1.11 pip install django==1.11
+Additionally, you’ll need to make sure you have pip available. You can check this by running:
+pip --Version
+`Install Pipenv pip install --user pipenv
+`install virtualenv and then test it
+python3.6 pip install --user --upgrade pip
+python3.6 -m virtualenv env
+source env/bin/activate
+Inorder to clone , follow the procedure below;
+
+On GitHub, navigate to the main page of the repository.
+Under the repository name, click Clone or downlonload.
+click the paste button.
+Open Terminal.
+Change the current working directory to the location where - you want the cloned directory to be made.
+Type git clone, and then paste the URL you copied in Step 2.
+git clonehttps://github.com/HannahChege/Award.git Press Enter.
+#CREATING A DATABASE
+
+psql
+CREATE DATABASE award;
+connect to the database \c award;
+check if tables have been created \dt
+#RUN MIGRATIONS
+
+python3.6 manage.py migrate
+python3.6 manage.py makemigrations award
+#RUNNING THE APP
+
+python3.6 manage.py runserver
+#TESTING
+
+python3.6 manage.py test award 
 # TECHNOLOGIES USED
 - Python 3.6
 - Django MVC framework
