@@ -19,37 +19,21 @@
               </div>
             </form>
           </div>
-          <a href="/profile/{{user.id}}" style="color:purple;"><button>Profile</button></a>  
-          <a href="/newprofile/" style="color:purple;"><button>Edit Profile</button></a>  
-
           <div class="col-sm-6 col-md-6">
                 {% if user.is_authenticated %}
-                <ul>
-                  <li class="dropdown">
-                    <a href="#" style="color:purple; margin-left:350px"; class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                              <span class="caret"></span>
-                          </a>
-                      <li>
-                        <a href="">Home</a>
-                      </li>
-                      <li>
-                        <a href="/accounts/password/change">Change Password</a>
-                      </li>
-                      <li>
-                        <a href="/logout">Logout</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                        <a href="/logout" style="margin-left:1200px">Logout</a>
                 {% else %}
                 <li>
                   <a class='btn btn-default' href="/accounts/register/">Login/Register</a>
                 </li>
-    
                 {% endif %}
               </div>
             </div>
-            <a href="/profile/" style="color:purple;"  style="margin-left:10px;"><button>Edit Profile</button></a> 
+            <div class="profiles">
+            <a href="/profile/{{user.id}}" style="color:purple;"><button>Profile</button></a>  
+          <a href="/newprofile/" style="color:purple;"><button>Edit Profile</button></a>  
+            <!-- <a href="/profile/" style="color:purple;"  style="margin-left:10px;"><button>Edit Profile</button></a>  -->
+          </div>
   </div>
   <div class="upload_project">
     <a href="new/project"   style="margin-left:1200px"; class="btn btn-primary">Post Project</a>
