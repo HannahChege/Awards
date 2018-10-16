@@ -8,21 +8,43 @@
               <div id="image" class="p-1">
                 <div id="front" class="zoom">
                   <div class="overlay">
-    <div class="col-md-12">
-      <div class="well">
-      <img src="{{project.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{project.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
-      <p>{{project.title}}</p>
-    <p>{{project.description}}</p>
-    <p>Posted {{ image.pub_time|timesince }} ago.</p>
-    <div class="card-footer" style="padding-top:15px; height:100px;border:1px solid rgb(243, 241, 241); background-color: rgb(247, 247, 247);">
-      <div class="col-md-12">
-          <span class="likes">
-              <i class="fa fa-heart" aria-hidden="true" style="font-size:20px;"></i><span class="count"><br>0
-              </span>Likes
-          </span>
-      </div>          
+                    <div class="col-md-6  col-md-6">
+      <div class="panel panel-default">
+      <img src="{{project.image.url}}" style="width: 200%" class="image" data-toggle="modal" data-target="#exampleModal{{project.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Rate By Design</h4>
 
-    </div>
+            <form  action="{%url 'add_design' project_id=project.id %}" method="POST">
+              {%csrf_token%}
+              {% bootstrap_form form layout='inline' %}
+              <input type="submit" value="Rate">
+            </form>
+          </div>
+          <div class="col-md-4">
+            <h4>Rate By Content</h4>
+            <form  action="{%url 'review_content' project_id=project.id %}" method="POST">
+              {%csrf_token%}
+              {% bootstrap_form form layout='inline' %}
+              <input type="submit" value="Rate">
+            </form>
+          </div>
+          <div class="col-md-4">
+            <h4>Rate By Usability</h4>
+            <form  action="{%url 'review_usability' project_id=project.id %}" method="POST">
+            {%csrf_token%}
+            {% bootstrap_form form layout='inline' %}
+            <input type="submit" value="Rate">
+          </form>
+          </div>
+        </div>
+        
+                     
+           
+
+
+             
+    
     </div>
 </div>
                 </div>  
@@ -32,34 +54,6 @@
 
 <!--Rating-->
         </div>
-
-
-        <hr><hr>
-        <div class="col-xs-3 col-sm-6 col-md-4 col-lg-4">
-                    <h4>Rate By Design</h4>
-
-
-
-              <form  action="{%url 'add_design' project_id=project.id %}" method="POST">
-    {%csrf_token%}
-    {% bootstrap_form form layout='inline' %}
-    <input type="submit" value="Rate">
-  </form>
-            <h4>Rate By Content</h4>
-  <form  action="{%url 'review_content' project_id=project.id %}" method="POST">
-    {%csrf_token%}
-    {% bootstrap_form form layout='inline' %}
-    <input type="submit" value="Rate">
-  </form>
-             <h4>Rate By Usability</h4>
-              <form  action="{%url 'review_usability' project_id=project.id %}" method="POST">
-    {%csrf_token%}
-    {% bootstrap_form form layout='inline' %}
-    <input type="submit" value="Rate">
-  </form>
-
-
-        </div> 
         {% endfor %} 
 
 <!--  modal -->
@@ -74,8 +68,11 @@ aria-hidden="true">
         <span aria-hidden="true">&times;</span>
      </div>
     <div class="modal-body">
-      <img src="{{project.dp.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
-      <p> {{project.description }}</p><label for="location"> Project BIo :{{project.bio }}</label>
+        <p style="font-size:40px">{{project.title}}</p>
+      <img src="{{project.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{project.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+      <p>{{project.title}}</p>
+    <p>{{project.description}}</p>
+    <p>Posted {{ image.pub_time|timesince }} ago.</p>
 
 
     </div>
