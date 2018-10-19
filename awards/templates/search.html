@@ -7,7 +7,9 @@
      <h2>Found {{ projects|length }} of searched term {{message}}</h2>
    {% else %}
      <h2> Found 0 articles for the search term {{message}}</h2>
-   {% endif %}
+     <p>{{project.title}}</p>
+     <p>{{project.description}}</p>
+     {% endif %}
 
  </div>
 
@@ -17,6 +19,9 @@
    {% for project in projects %}
      <div class="col-sm-6 col-md-3">
          <h1>{{project.title}}</h1>
+         <p>{{project.title}}</p>
+         <p>{{project.description}}</p>
+         <img src="{{project.image.url}}" style="width: 200%" class="image" data-toggle="modal" data-target="#exampleModal{{project.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
      </div>
    {% endfor %}
  {% endif %}
