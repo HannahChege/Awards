@@ -18,35 +18,6 @@ def create_profile(sender, instance,created,**kwargs):
 def save_profile(sender, instance,**kwargs):
    instance.profile.save()
 # Create your models here.
-class Profile(models.Model):
-    bio = models.TextField()
-    dp = models.ImageField( blank=True)
-    contact = models.CharField(max_length = 30, blank=True)
-    user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE, primary_key=True)
-   
-    def __str__(self):
-        return self.user.username
-
-
-
-    def save_profile(self):
-        self.save()  
-
-    def delete_profile(self):
-        self.delete()  
-
-    @classmethod
-    def update_profile(cls,update):
-        pass
-     
-    @classmethod
-    def search_by_profile(cls,name):
-        profile = Profile.objects.filter(user__username__icontains=name)
-        return profile 
-    @classmethod 
-    def get_by_id(cls,id):
-        profile = Profile.objects.get(user = id)
-        return profile
 
 class Project(models.Model):
     title = models.TextField()
