@@ -48,7 +48,7 @@ def search_results(request):
        searched_categories = Projects.search_image(category)
        message = f"{category}"
 
-       return render(request, 'all-task/search.html',{"message":message,"projects": searched_categories})
+       return render(request, 'search.html',{"message":message,"projects": searched_categories})
 
    else:
        message = " Found 0 images for the search term"
