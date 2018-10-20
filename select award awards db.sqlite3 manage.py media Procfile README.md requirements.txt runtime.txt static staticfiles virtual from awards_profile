@@ -1,0 +1,21 @@
+                  List of relations
+ Schema |            Name            | Type  | Owner  
+--------+----------------------------+-------+--------
+ public | auth_group                 | table | hannah
+ public | auth_group_permissions     | table | hannah
+ public | auth_permission            | table | hannah
+ public | auth_user                  | table | hannah
+ public | auth_user_groups           | table | hannah
+ public | auth_user_user_permissions | table | hannah
+ public | authtoken_token            | table | hannah
+ public | awards_contentrating       | table | hannah
+ public | awards_designrating        | table | hannah
+ public | awards_profile             | table | hannah
+ public | awards_project             | table | hannah
+ public | awards_usabilityrating     | table | hannah
+ public | django_admin_log           | table | hannah
+ public | django_content_type        | table | hannah
+ public | django_migrations          | table | hannah
+ public | django_session             | table | hannah
+(16 rows)
+
